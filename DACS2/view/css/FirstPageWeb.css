@@ -1,0 +1,147 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #ddd;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.navbar a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.navbar .buttons a {
+    color: #fff;
+    background: linear-gradient(90deg, #f6923b, #d364d8);
+    padding: 0.5rem 1.2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.navbar .signin-login a {
+    color: #fff;
+    background: #000;
+    padding: 0.5rem 1.2rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 2px solid transparent; /* Viền trong suốt ban đầu */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt */
+}
+
+.navbar .signin-login a:hover {
+    border-color: #ff0000; /* Khi hover, viền đổi thành màu đỏ */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Thêm hiệu ứng sáng viền */
+    color: #fff; /* Màu chữ đỏ khi hover */
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    padding-top: 100px;
+    background-color: #111;
+    color: #fff;
+}
+
+.hero-section .title {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+.hero-section .highlight-orange {
+    color: #f6923b;
+}
+
+.hero-section .highlight-pink {
+    color: #d364d8;
+}
+
+.hero-section .subtitle {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+/* Call to Action Buttons */
+.cta-buttons {
+    margin-top: 2rem;
+}
+
+.cta-buttons .btn {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #f6923b, #d364d8);
+}
+
+.btn-secondary {
+    background-color: #333;
+}
+
+/* Trusted Logos */
+.trusted-logos {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    opacity: 0.8;
+}
+
+.trusted-logos img {
+    height: 40px;
+}
+
+/* Chatbot Icon */
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f364d8;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+}
