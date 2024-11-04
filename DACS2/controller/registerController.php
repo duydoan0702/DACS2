@@ -1,13 +1,14 @@
+<?php
+    session_start();
+    require_once '../model/connection.php';
+    require_once 'sendController.php';
+?>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../view/style.css">
+    <link rel="stylesheet" href="../view/css/errorMessage.css">
 </head>
 <body>
     <?php
-        require_once '../model/connection.php';
-        // verification nick to email
-        // when user enter error withhold information
-        // use session
 
         if(isset($_POST['signUp'])){
 
@@ -20,8 +21,8 @@
                 $errors[] = "Email already exists. Please choose another one.";
             }
 
-            if(filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
-                $errors[] = "Invalid email format!";
+            if(!filter_var($userEmail, FILTER_VALIDATE_EMAIL)){
+                $errors[] = "Invalid email format!";    
             }
 
             checkPassword($userPassword, $errors);
@@ -34,20 +35,23 @@
                 $query = $db->prepare($sql);
                 $query->execute(array(':name' => $userName, ':email' => $userEmail, ':password' => $hashPassword));
 
-                echo "<div class='message'>
-                        <p>Registration successfully!</p>
-                    </div> <br>";
-                echo "<a href='../index.php'><button class ='btn'>Login Now</button></a>";
-
-                exit();
+                $_SESSION['verification_code'] = rand(1000,9999);
+                $_SESSION['verification_code_expiry'] = time() + 60;
+                
+                if (sendVerification($_SESSION['verification_code'], $userEmail)) {
+                    header('Location: ../view/html/sendOTP.html');
+                    exit();
+                }
+                
             }else{
                 echo "<div class = 'message'>
                         <p>";
                             foreach($errors as $error){
-                            echo $error . '<br>'; } 
+                            echo $error . '<br>'; }
+                            echo "<button onclick='history.back()' class='btn'>Go Back</button>";
                 echo "</p>
                     </div>";
-                echo "<a href='../index.php'><button class='btn'>Login Now</button>";
+                
             }
         }
 
